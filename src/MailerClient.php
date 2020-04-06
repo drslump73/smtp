@@ -148,10 +148,10 @@ class MailerClient
      */
     private function createMailFrom(): string
     {
-        if ($this->config->getMailFrom()) {
-            return "{$this->config->getMailFrom()} <{$this->config->getUsername()}>";
+        if ($this->config->getFromname()) {
+            return "{$this->config->getFromname()} <{$this->config->getMailFrom()}>";
         }
-        return $this->config->getUsername();
+        return $this->config->getMailFrom();
     }
 
     //创建附件

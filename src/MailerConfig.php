@@ -3,18 +3,15 @@
  * Created by PhpStorm.
  * User: runs
  * Date: 19-1-28
- * Time: 下午2:36
+ * Time: 下午2:36.
  */
 
 namespace EasySwoole\Smtp;
 
-
 use EasySwoole\Spl\SplBean;
 
 /**
- * Class MailerConfig
- *
- * @package EasySwoole\Mailer
+ * Class MailerConfig.
  */
 class MailerConfig extends SplBean
 {
@@ -44,17 +41,19 @@ class MailerConfig extends SplBean
     /**
      * @var int 最大包大小
      */
-    protected $maxPackage = 1024 * 1024 * 2;//2M
+    protected $maxPackage = 1024 * 1024 * 2; //2M
+
+    protected $fromname;
 
     /**
      * initialize
-     * 初始化操作
+     * 初始化操作.
      */
     protected function initialize(): void
     {
-        /** @var bool ssl 默认关闭ssl */
+        /* @var bool ssl 默认关闭ssl */
         $this->ssl = $this->ssl ?? false;
-        /** @var int port 尝试自动识别端口号 */
+        /* @var int port 尝试自动识别端口号 */
         $this->port = $this->port ?? ($this->ssl ? 465 : 25);
     }
 
@@ -181,5 +180,15 @@ class MailerConfig extends SplBean
     public function getMaxPackage()
     {
         return $this->maxPackage;
+    }
+
+    public function setFromname(string $name): void
+    {
+        $this->fromname = $name;
+    }
+
+    public function getFromname(): string
+    {
+        return $this->fromname;
     }
 }
